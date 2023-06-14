@@ -19,9 +19,49 @@ const row = (bill) => {
     `)
   }
 
+  /*const sortBillsByDate = (bills) => {
+    const billsCopy = [...bills];
+  
+    billsCopy.sort((a, b) => {
+      const date1 = convertToDate(a.date);
+      const date2 = convertToDate(b.date);
+  
+      if (date1 <= date2) return 1;
+      if (date1 > date2) return -1;
+    });
+  
+    return billsCopy;
+  };*/
+
+  const convertToDate = (formatedDate) => {
+ 
+    let [day, month, year] = formatedDate.split(" ");
+  
+    year = parseInt(year);
+    month = MONTHS_FR[month];
+    day = parseInt(day);
+  
+    return new Date(year, month, day);
+  };
+  
+  export const  MONTHS_FR = {
+    "Jan.": 0,
+    "Fév.": 1,
+    "Mar.": 2,
+    "Avr.": 3,
+    "Mai.": 4,
+    "Jui.": 5,
+    "Jui.": 6,
+    "Aoû.": 7,
+    "Sep.": 8,
+    "Oct.": 9,
+    "Nov.": 10,
+    "Déc.": 11,
+  };
+
   const rows = (data) => {
     return (data && data.length) ? data
-    .sort((billA, billB) => billA.date < billB.date ? 1 : -1)
+    .sort((a, b) => convertToDate(b.date) - convertToDate(a.date))
     .map(bill => row(bill)).join("") : ""
   }
 
