@@ -19,20 +19,6 @@ const row = (bill) => {
     `)
   }
 
-  /*const sortBillsByDate = (bills) => {
-    const billsCopy = [...bills];
-  
-    billsCopy.sort((a, b) => {
-      const date1 = convertToDate(a.date);
-      const date2 = convertToDate(b.date);
-  
-      if (date1 <= date2) return 1;
-      if (date1 > date2) return -1;
-    });
-  
-    return billsCopy;
-  };*/
-
   const convertToDate = (formatedDate) => {
  
     let [day, month, year] = formatedDate.split(" ");
